@@ -1,17 +1,31 @@
 import { Request, Response } from "express";
+import prisma from "../../../prisma-client";
 
-export const listProjects = (req: Request, res: Response) => {
-  res.status(200).json([
-    { id: 1, name: "project1" },
-    { id: 1, name: "project1" },
-    { id: 1, name: "project1" },
-  ]);
+export const listProjects = async (req: Request, res: Response) => {
+  const projects = await prisma.project.findMany({
+    where: {
+      user_id: req.auth?.payload.sub,
+    },
+  });
+  res.status(200).json({ projects });
 };
 
-export const getProject = (req: Request, res: Response) => {
-  res.status(200).json({ id: 1, name: "project1" });
+export const getProject = async (req: Request, res: Response) => {
+  const project = await prisma.project.findUnique({
+    where: {
+      id: req.params.id,
+      user_id: req.auth?.payload.sub,
+    },
+  });
+  res.status(200).json({ project });
 };
 
-export const listProjectTask = (req: Request, res: Response) => {
-  res.status(200).json(["task1", "task2"]);
+export const listProjectTask = async (req: Request, res: Response) => {
+  const tasks = await prisma.task.findMany({
+    where: {
+      project_id: req.params.id,
+      user_id: req.auth?.payload.sub,
+    },
+  });
+  res.status(200).json({ tasks });
 };

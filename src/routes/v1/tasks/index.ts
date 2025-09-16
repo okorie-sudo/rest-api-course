@@ -1,9 +1,11 @@
 import express, { Router } from "express";
-import { listTasks, getTasks } from "./controllers";
+import { listTasks, getTask } from "./controllers";
+import authenticateUser from "../../../middleware/authenticate-user";
 
 const tasks: Router = express.Router();
 
+tasks.use(authenticateUser);
 tasks.get("/", listTasks);
-tasks.get("/:id", getTasks);
+tasks.get("/:id", getTask);
 
 export default tasks;

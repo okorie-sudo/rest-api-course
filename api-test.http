@@ -3,11 +3,12 @@ GET http://localhost:5000/health HTTP/1.1
 
 
 ### get tasks
-GET http://localhost:5000/v1/tasks HTTP/1.1
+GET http://localhost:5000/v1/tasks HTTP/1.1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3NTgwMTg2NTcsImV4cCI6MTc1ODAyMjI1NywiaXNzIjoidGFzayBtYW5hZ2VyIn0.66pEmSvGi748sAh5gh6hVgRfeX8ONgWBA6r-o6IR9uY
 
 ### get tasks by id
-GET http://localhost:5000/v1/tasks/1 HTTP/1.1
-
+GET http://localhost:5000/v1/tasks/216c1653-7b13-49bd-9499-53007ead0126 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTZjMTY1My03YjEzLTQ5YmQtOTQ5OS01MzAwN2VhZDAxMjYiLCJpYXQiOjE3NTgwMTg2NTcsImV4cCI6MTc1ODAyMjI1NywiaXNzIjoidGFzayBtYW5hZ2VyIn0.66pEmSvGi748sAh5gh6hVgRfeX8ONgWBA6r-o6IR9uY
 ### get projects
 GET http://localhost:5000/v1/projects HTTP/1.1
 
